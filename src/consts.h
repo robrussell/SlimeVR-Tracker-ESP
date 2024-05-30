@@ -55,6 +55,7 @@
 #define BOARD_MOCOPI 15 // Used by mocopi/moslime
 #define BOARD_WEMOSWROOM02 16
 #define BOARD_XIAO_ESP32C3 17
+#define ADAFRUIT_FEATHER_ESP32S3 18
 #define BOARD_DEV_RESERVED 250 // Reserved, should not be used in any release firmware
 
 #define BAT_EXTERNAL 1

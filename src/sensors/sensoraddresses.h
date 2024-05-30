@@ -1,5 +1,5 @@
 //This is useful if you want to use an address shifter
-#define DEFAULT_IMU_ADDRESS true
+#define DEFAULT_IMU_ADDRESS false
 
 //We use fixed address values instead of scanning to keep the sensorID consistent and to avoid issues with some breakout board with multiple active ic2 addresses
 #if DEFAULT_IMU_ADDRESS

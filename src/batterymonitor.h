@@ -75,6 +75,8 @@ public:
 private:
     unsigned long last_battery_sample = 0;
 #if BATTERY_MONITOR == BAT_MCP3021 || BATTERY_MONITOR == BAT_INTERNAL_MCP3021
+    // TODO: The Feather has a MAX17048 (or LC709203F on older ones) 
+    // uint8_t address = 0x36;
     uint8_t address = 0;
 #endif
 #if BATTERY_MONITOR == BAT_INTERNAL || BATTERY_MONITOR == BAT_INTERNAL_MCP3021
