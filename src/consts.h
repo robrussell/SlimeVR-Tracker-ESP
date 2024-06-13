@@ -62,6 +62,7 @@
 #define BAT_INTERNAL 2
 #define BAT_MCP3021 3
 #define BAT_INTERNAL_MCP3021 4
+#define BAT_MAX17048 5
 
 #define LED_OFF 255
 

@@ -43,11 +43,17 @@ void BatteryMonitor::Setup()
         m_Logger.error("MCP3021 not found on I2C bus");
     }
 #endif
+#if BATTERY_MONITOR == BAT_MAX17048
+    if (address == 0)
+    {
+        m_Logger.error("MAX17048 not found on I2C bus");
+    }
+#endif
 }
 
 void BatteryMonitor::Loop()
 {
-    #if BATTERY_MONITOR == BAT_EXTERNAL || BATTERY_MONITOR == BAT_INTERNAL || BATTERY_MONITOR == BAT_MCP3021 || BATTERY_MONITOR == BAT_INTERNAL_MCP3021
+    #if BATTERY_MONITOR == BAT_EXTERNAL || BATTERY_MONITOR == BAT_INTERNAL || BATTERY_MONITOR == BAT_MCP3021 || BATTERY_MONITOR == BAT_INTERNAL_MCP3021 || BATTERY_MONITOR == BAT_MAX17048
         auto now_ms = millis();
         if (now_ms - last_battery_sample >= batterySampleRate)
         {
@@ -96,6 +102,20 @@ void BatteryMonitor::Loop()
                         float v = (((uint16_t)(MSB & 0x0F) << 6) | (uint16_t)(LSB >> 2));
                         v *= ADCMultiplier;
                         voltage = (voltage > 0) ? min(voltage, v) : v;
+                    }
+                }
+            #endif
+            #if BATTERY_MONITOR == BAT_MAX17048
+                if (address > 0)
+                {
+                    // Cell voltage register address 0x02
+                    uint16_t data;
+            		auto status = I2Cdev::readWord(address, 0x02, &data);
+                    if (status == 0)
+                    {
+                        float v = data * (78.125 / 1000000);
+                        voltage = (voltage > 0) ? min(voltage, v) : v;
+                        m_Logger.info("MAX17048 voltage %f", voltage);
                     }
                 }
             #endif

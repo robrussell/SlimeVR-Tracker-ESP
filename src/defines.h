@@ -56,7 +56,9 @@ IMU_DESC_ENTRY(IMU_BMP160, PRIMARY_IMU_ADDRESS_ONE, IMU_ROTATION, PIN_IMU_SCL, P
 //   BAT_EXTERNAL for ADC pin,
 //   BAT_INTERNAL for internal - can detect only low battery,
 //   BAT_MCP3021 for external ADC connected over I2C
-#define BATTERY_MONITOR BAT_INTERNAL
+//   BAT_MAX17048 for the MAX17048 LiPo fuel gauge connected over I2C
+// #define BATTERY_MONITOR BAT_MAX17048
+#define BATTERY_MONITOR BAT_MAX17048
 
 // BAT_EXTERNAL definition override
 // D1 Mini boards with ESP8266 have internal resistors. For these boards you only have to adjust BATTERY_SHIELD_RESISTANCE.
