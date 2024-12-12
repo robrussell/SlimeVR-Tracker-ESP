@@ -74,7 +74,6 @@ PIN_IMU_SDA, PRIMARY_IMU_OPTIONAL, BMI160_QMC_REMAP) \
 //   BAT_INTERNAL for internal - can detect only low battery,
 //   BAT_MCP3021 for external ADC connected over I2C
 //   BAT_MAX17048 for the MAX17048 LiPo fuel gauge connected over I2C
-// #define BATTERY_MONITOR BAT_MAX17048
 #define BATTERY_MONITOR BAT_MAX17048
 
 // BAT_EXTERNAL definition override

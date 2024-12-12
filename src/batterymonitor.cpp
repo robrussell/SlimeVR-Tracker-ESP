@@ -42,8 +42,7 @@ void BatteryMonitor::Setup() {
 	}
 #endif
 #if BATTERY_MONITOR == BAT_MAX17048
-    if (address == 0)
-    {
+    if (address == 0) {
         m_Logger.error("MAX17048 not found on I2C bus");
     }
 #endif
@@ -102,18 +101,16 @@ void BatteryMonitor::Loop()
 		}
 #endif
 #if BATTERY_MONITOR == BAT_MAX17048
-                if (address > 0)
-                {
-                    // Cell voltage register address 0x02
-                    uint16_t data;
-            		auto status = I2Cdev::readWord(address, 0x02, &data);
-                    if (status == 0)
-                    {
-                        float v = data * (78.125 / 1000000);
-                        voltage = (voltage > 0) ? min(voltage, v) : v;
-                        m_Logger.info("MAX17048 voltage %f", voltage);
-                    }
-                }
+		if (address > 0) {
+			// Cell voltage register address 0x02
+			uint16_t data;
+			auto status = I2Cdev::readWord(address, 0x02, &data);
+			if (status == 0) {
+				float v = data * (78.125 / 1000000);
+				voltage = (voltage > 0) ? min(voltage, v) : v;
+				m_Logger.info("MAX17048 voltage %f", voltage);
+			}
+		}
 #endif
 		if (voltage > 0)  // valid measurement
 		{
