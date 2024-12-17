@@ -1,3 +1,14 @@
+# This is a fork
+
+This is a fork of [SlimeVR-Tracker-ESP](https://github.com/SlimeVR/SlimeVR-Tracker-ESP) specifically for running the tracker firmware on the combination of the Adafruit ESP32-S3 Feather with two ICM-20948 IMUs.
+
+I'm working on upstreaming it but in the meantime the code in this repo builds and seems to work with server version 0.13.2.
+
+See also:
+- https://robr.dev/2024/slime-vr-firmware/ for more details on flashing this fork
+- https://robr.dev/2024/slime-vr-diy/ for specifics on the parts used in this DIY build
+
+
 # SlimeVR Tracker firmware for ESP
 
 Firmware for ESP8266 / ESP32 microcontrollers and different IMU sensors to use them as a vive-like trackers in VR.
